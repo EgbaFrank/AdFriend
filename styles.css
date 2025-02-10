@@ -1,0 +1,25 @@
+.adfriend-message {
+    display: flex !important; /* Use flexbox for alignment */
+    align-items: center !important; /* Center content vertically */
+    justify-content: center !important; /* Center text horizontally */
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: #fff !important; /* White text for contrast */
+    background: #808080 !important; /* Gray background */
+    text-align: center !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+    width: 100% !important; /* Fit the full ad space */
+    height: 100% !important; /* Inherit the original ad height */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden !important; /* Prevent content overflow */
+  }
+  
+  /* Make sure the container doesn't break */
+  .adfriend-container {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+  }
+  
