@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AdFriend</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>AdFriend Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 250px;
+      padding: 10px;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="popup-container">
-    <h2>AdFriend Settings</h2>
-    <button id="changeMessage">New Motivation</button>
-    <p id="currentMessage">Click the button to see a new message.</p>
-  </div>
+  <h3>Replace Ads With:</h3>
+  <select id="replacementType">
+    <option value="quotes">Motivational Quotes</option>
+    <option value="facts">Fun Facts</option>
+    <option value="riddles">Riddles</option>
+    <option value="jokes">Jokes</option>
+    <option value="empty">Empty Space</option>
+    <option value="solid">Solid Background</option>
+    <option value="custom">Custom Message</option>
+  </select>
+
+  <input type="text" id="customMessage" placeholder="Enter custom text"
+    style="display: none; width: 100%; margin-top: 5px;">
+
+  <button id="saveBtn">Save</button>
   <script src="popup.js"></script>
 </body>
+
 </html>
