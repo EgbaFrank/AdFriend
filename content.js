@@ -28,9 +28,66 @@ const quotes = [
     "Believe you can and you're halfway there."
 ];
 
-// Utility: Get a random quote from the array.
+const funFacts = [
+    "Bananas are berries, but strawberries aren't!",
+    "Honey never spoils. Archaeologists have found pots of it in ancient Egyptian tombs still safe to eat!",
+    "Octopuses have three hearts and blue blood!",
+    "Wombat poop is cube-shaped to stop it from rolling away!",
+    "There’s a species of jellyfish that can live forever by reverting to its juvenile form!",
+    "A cloud can weigh more than a million pounds!",
+    "The Eiffel Tower can grow taller in the summer due to heat expansion!",
+    "A group of flamingos is called a 'flamboyance'!",
+    "Sharks predate trees—they've been around for over 400 million years!",
+    "Butterflies can taste with their feet!",
+    "Water can boil and freeze at the same time under the right conditions—this is called the 'triple point'!",
+    "Sloths can hold their breath longer than dolphins—up to 40 minutes!"
+];
+
+const riddles = [
+    { question: "The more you take, the more you leave behind. What am I?", answer: "Footsteps" },
+    { question: "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?", answer: "An echo" },
+    { question: "The more of me you take, the more you leave behind. What am I?", answer: "A hole" },
+    { question: "What has to be broken before you can use it?", answer: "An egg" },
+    { question: "I am always hungry, I must always be fed. The thing I touch will soon turn red. What am I?", answer: "Fire" },
+    { question: "What has cities, but no houses; forests, but no trees; and rivers, but no water?", answer: "A map." },
+    { question: "The more you use me, the more you leave behind. What am I?", answer: "An eraser." },
+    { question: "I have hands but no arms, a face but no eyes. What am I?", answer: "A clock." },
+    { question: "I am not alive, but I can grow. I don’t have lungs, but I need air. What am I?", answer: "A fire" },
+    { question: "I have keys but open no locks. I have space but no room. You can enter but not go outside. What am I?", answer: "A keyboard." },
+    { question: "I’m light as a feather, yet the strongest person can’t hold me for much longer than a minute. What am I?", answer: "Your breath." },
+    { question: "What’s always coming but never arrives?", answer: "My motivation to exercise." }
+];
+
+const jokes = [
+    { setup: "Why don’t skeletons fight each other?", punchline: "They don’t have the guts!" },
+    { setup: "Why couldn’t the bicycle stand up by itself?", punchline: "It was two-tired!" },
+    { setup: "What do you call fake spaghetti?", punchline: "An impasta!" },
+    { setup: "Why did the scarecrow win an award?", punchline: "Because he was outstanding in his field!" },
+    { setup: "Why don’t eggs tell jokes?", punchline: "Because they might crack up!" },
+    { setup: "What did the zero say to the eight?", punchline: "Nice belt!" },
+    { setup: "What do you call cheese that isn’t yours?", punchline: "Nacho cheese!" },
+    { setup: "Why can’t you give Elsa a balloon?", punchline: "Because she will let it go!" },
+    { setup: "What kind of shoes do ninjas wear?", punchline: "Sneakers!" },
+    { setup: "Why did the golfer bring an extra pair of pants?", punchline: "In case he got a hole in one!" },
+    { setup: "How does the ocean say hi?", punchline: "It waves!" },
+    { setup: "Why did the coffee file a police report?", punchline: "Because it got mugged." }
+];
+
+// Utility: Get a random item from the array.
 function getRandomQuote() {
     return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+function getRandomFact() {
+    return funFacts[Math.floor(Math.random() * funFacts.length)];
+}
+
+function getRandomRiddle() {
+    return riddles[Math.floor(Math.random() * riddles.length)];
+}
+
+function getRandomJoke() {
+    return jokes[Math.floor(Math.random() * jokes.length)];
 }
 
 // Replace the ad element with positive content.
@@ -43,14 +100,39 @@ function replaceAd(element) {
     console.log("Replacing Ad Element:", element);
     element.dataset.adfriendReplaced = "true";
 
-    const quote = getRandomQuote();
     // Replace the inner content with a simple widget.
-    element.innerHTML = `
-    <div class="adfriend-replacement" style="border: 1px solid #ccc; padding: 10px; background: #f9f9f9; text-align: center;">
-      <p style="margin: 0; font-size: 16px;">${quote}</p>
-    </div>`;
+    chrome.storage.sync.get(["replacementType", "customMessage"], (data) => {
+        let replacementContent = "";
 
-    // Adjust styles further if needed (e.g., remove background images, adjust height, etc.)
+        switch (data.replacementType) {
+          case "quotes":
+            replacementContent = `<p style="font-size: 16px; line-height: 1.5; font-weight: 500; color: #374151; background-color: #F9FAFB;">${getRandomQuote()}</p>`;
+            break;
+          case "facts":
+            replacementContent = `<p style="font-size: 16px; line-height: 1.5; font-weight: 500; color: #92400E; background-color: #FEF3C7;;">${getRandomFact()}</p>`;
+            break;
+          case "riddles":
+            const riddle = getRandomRiddle();
+            replacementContent = `<p style="font-size: 16px; line-height: 1.5; font-weight: 500; color: #92400E; background-color: #FEF3C7;;">${riddle.question} <br><span style="font-size: 0.9em; font-style: italic; color: gray; text-align: right; display: block; padding: 5px;">-- ${riddle.answer}</span></p>`;
+            break;
+          case "jokes":
+            const joke = getRandomJoke();
+            replacementContent = `<p style="font-size: 16px; line-height: 1.5; font-weight: 500; color: #92400E; background-color: #FEF3C7;;">${joke.setup} <br><span style="font-size: 0.9em; font-style: italic; color: gray; text-align: right; display: block; padding: 5px;">-- ${joke.punchline}</span></p>`;
+            break;
+          case "empty":
+            replacementContent = "";
+            break;
+          case "solid":
+            replacementContent = `<div style="min-width: 200px; background-color:rgb(136, 137, 141); min-height: 50px;">&nbsp;</div>`;
+            break;
+          case "custom":
+            replacementContent = `<p style="font-size: 16px; line-height: 1.5; color: #111827; background-color: #E5E7EB">${data.customMessage || "Custom Text"}</p>`;
+            break;
+          default:
+            replacementContent = `<p style="font-size: 16px; line-height: 1.5; font-weight: 500; color: #111827; background-color: #F9FAFB;">Ad Blocked</p>`;
+        };
+        element.innerHTML = `<div class="adfriend-replacement" style="font-family: Arial, sans-serif; text-align: center; padding: 10px;">${replacementContent}</div>`;
+      });
 }
 
 // Scan the document for ad elements and replace them.
