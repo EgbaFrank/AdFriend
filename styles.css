@@ -1,25 +1,198 @@
-.adfriend-message {
-    display: flex !important; /* Use flexbox for alignment */
-    align-items: center !important; /* Center content vertically */
-    justify-content: center !important; /* Center text horizontally */
-    font-size: 16px !important;
-    font-weight: bold !important;
-    color: #fff !important; /* White text for contrast */
-    background: #808080 !important; /* Gray background */
-    text-align: center !important;
-    padding: 15px !important;
-    border-radius: 8px !important;
-    width: 100% !important; /* Fit the full ad space */
-    height: 100% !important; /* Inherit the original ad height */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    overflow: hidden !important; /* Prevent content overflow */
-  }
+
+
+
+/*Fun facts section */
+.funfact-container {
+  font-family: 'Arial', sans-serif;
+  max-width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fff;
+  color: #333;
+  text-align: center;
+  border: 3px solid #FF8C00; /* Orange border for the frame */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.funfact-header {
+  font-size: 20px;
+  font-weight: bold;
   
-  /* Make sure the container doesn't break */
-  .adfriend-container {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 auto !important;
-  }
+  color: #FF8C00;
+  margin-bottom: 12px;
+}
+
+.funfact-text {
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.5;
+  padding: 10px;
+  border-radius: 5px;
+  background: #FFF3E0; /* Light orange background */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/*riddles section*/
+.riddle-box {
+  font-family: 'Arial', sans-serif;
+  background: #e0f7fa; /* Light blue */
+  padding: 20px;
+  border: 2px solid #0288d1; /* Deep blue */
+  border-radius: 10px;
+  text-align: center;
+  max-width: 280px;
+  margin: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.riddle-header {
+  font-size: 18px;
+  font-weight: bold;
   
+  color: #01579b;
+  margin-bottom: 10px;
+}
+
+.riddle-question {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0277bd;
+  margin-bottom: 10px;
+}
+
+.riddle-answer {
+  font-size: 14px;
+  color: #6b7280;
+  font-style: italic;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.riddle-answer span {
+  display: none;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.riddle-answer:hover span {
+  display: inline;
+}
+
+/*Joke section */
+.joke-container {
+  background: #fff7d6;
+  border: 3px solid #ffcc00;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  color: #222;
+  max-width: 300px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+}
+
+.joke-container:hover {
+  transform: scale(1.05);
+}
+
+.joke-header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff5722;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.joke-setup {
+  font-size: 17px;
+  font-weight: 600;
+  color: #444;
+  text-transform: uppercase;
+}
+
+.joke-punchline {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2e7d32;
+  text-transform: lowercase;
+  margin-top: 8px;
+}
+
+.joke-container:hover .joke-punchline {
+  color: #d84315;
+}
+/* Custom message section*/
+.custom-message-box {
+  background: #ffffff;
+  border: 2px solid #4a90e2;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  max-width: 350px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.custom-message-box::before {
+  content: "💬";
+  font-size: 24px;
+  position: absolute;
+  top: -12px;
+  left: 99%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  padding: 5px;
+  border-radius: 50%;
+  border: 2px solid #4a90e2;
+}
+
+.custom-message-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4a90e2;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.custom-message-content {
+  font-size: 16px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.5;
+}
+
+/*solid section*/
+.solid-placeholder {
+  min-width: 200px;
+  min-height: 100px;
+  background: linear-gradient(135deg, #a0aec0, #718096);
+  border-radius: 12px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.solid-placeholder::before {
+  content: "🚫 Ad Blocked";
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+}
+
