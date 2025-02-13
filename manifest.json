@@ -5,6 +5,7 @@
   "description": "Replaces ads with positive content widgets",
   "permissions": ["storage"],
   "host_permissions": ["<all_urls>"],
+
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -17,6 +18,7 @@
     {
       "matches": ["<all_urls>"],
       "js": ["content.js"],
+      "css": ["styles.css"],
       "run_at": "document_end"
     }
   ],
