@@ -7,6 +7,10 @@
   color: #333;
   text-align: center;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .popup-container h3 {
@@ -188,47 +192,53 @@
 }
 /* Custom message section*/
 .custom-message-box {
-  background: #ffffff;
-  border: 2px solid #4a90e2;
-  border-radius: 10px;
-  padding: 15px;
+  background: linear-gradient(135deg, #1e3a5f, #3b82f6); /* Deep blue gradient */
+  border: none;
+  border-radius: 12px;
+  padding: 18px;
   text-align: center;
-  font-family: "Roboto", sans-serif;
-  color: #333;
-  max-width: 350px;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  max-width: 360px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  transition: transform 0.3s ease-in-out;
   position: relative;
+  overflow: hidden;
 }
 
 .custom-message-box::before {
-  content: "💬";
-  font-size: 24px;
+  content: "";
   position: absolute;
-  top: -12px;
-  left: 99%;
-  transform: translateX(-50%);
-  background: #ffffff;
-  padding: 5px;
-  border-radius: 50%;
-  border: 2px solid #4a90e2;
+  top: 0;
+  left: 50%;
+  width: 150%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(-50%) rotate(-10deg);
+  pointer-events: none;
 }
 
 .custom-message-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  color: #4a90e2;
+  color: #f8fafc;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   letter-spacing: 1px;
 }
 
 .custom-message-content {
   font-size: 16px;
   font-weight: 400;
-  color: #555;
-  line-height: 1.5;
+  color: #e0eafc;
+  line-height: 1.6;
+  font-style: italic; /* Added italic style */
 }
+
+.custom-message-box:hover {
+  transform: scale(1.03);
+}
+
 
 /*solid section*/
 .solid-placeholder {
@@ -255,3 +265,25 @@
   opacity: 0.8;
 }
 
+
+.riddle-box,
+.joke-container {
+  max-height: 300px; /* Adjust this value as needed */
+  overflow: auto;
+}
+.popup-container {
+  max-height: 400px; /* Adjust as needed */
+  overflow: auto;
+}
+/*Ensure Center Alignment*/
+.funfact-container,
+.joke-container,
+.custom-message-box {
+  margin: 0 auto; /* Centers the box horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%; /* Prevents the box from getting too wide */
+  width: 100%;
+}
